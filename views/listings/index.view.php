@@ -1,6 +1,5 @@
 <?= load_partial('head') ?>
 <?= load_partial('navbar') ?>
-<?= load_partial('showcase-search') ?>
 <?= load_partial('top-banner') ?>
 
 <!-- Job Listings -->
@@ -187,10 +186,6 @@
                 </div>
             </div>
         </div>
-        <a href="/listings" class="block text-xl text-center">
-            <i class="fa fa-arrow-alt-circle-right"></i>
-            Show All Jobs
-        </a>
 </section>
 
 
