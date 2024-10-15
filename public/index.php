@@ -1,13 +1,25 @@
 <?php
-
+require __DIR__ . '/../vendor/autoload.php';
 require '../helpers.php';
 
-require base_path('Router.php');
+use Framework\Router;
 
+//spl_autoload_register(function ($class) {
+//    $path = base_path('Framework/' . $class.'.php');
+//    if (file_exists($path)) {
+//        require $path;
+//    }
+//});
+
+//Instantiating the router
 $router = new Router();
+
+// Get routes
 $routes = require base_path('routes.php');
 
-$uri = $_SERVER['REQUEST_URI'];
-$method = $_SERVER['REQUEST_METHOD'];
+// Get current URI and HTTP method
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-$router->route($uri, $method);
+
+// Route the request
+$router->route($uri);
