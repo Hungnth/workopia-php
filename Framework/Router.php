@@ -87,19 +87,14 @@ class Router
     {
         $request_method = $_SERVER['REQUEST_METHOD'];
 
-        foreach ($this->routes as $route) {
-//            if ($route['uri'] == $uri && $route['method'] === $method) {
-//                /* Extract controller and controller method */
-//                $controller = 'App\\Controllers\\' . $route['controller'];
-//                $controller_method = $route['controller_method'];
-//
-//                /* Instantiate the controller and call method */
-//                $controller_instance = new $controller();
-//                $controller_instance->$controller_method();
-//                return;
-//            }
+        // Check for _method input
+        if($request_method === 'POST' && isset($_POST['_method'])) {
+            // Override the request method with the value of _method
+            $request_method = strtoupper($_POST['_method']);
+        }
 
-            /* Split the current URI into segments */
+        foreach ($this->routes as $route) {
+            // Split the current URI into segments
             $uri_segments = explode('/', trim($uri, '/'));
 
             /* Split the route URI into segments */
